@@ -545,3 +545,11 @@ lightboxModal?.addEventListener(
     }
 );
 
+const menuWrapper = document.querySelector('.menu-wrapper');
+
+function checkScroll() {
+    menuWrapper.classList.toggle('scrolling', window.scrollY > 50);
+}
+
+window.addEventListener('scroll', checkScroll);
+checkScroll();
