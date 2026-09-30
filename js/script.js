@@ -36,6 +36,7 @@ if (menuWrapper) {
 }
 
 
+
 /* =========================================================
    DỮ LIỆU ALBUM
    ========================================================= */
@@ -545,11 +546,13 @@ lightboxModal?.addEventListener(
     }
 );
 
-const menuWrapper = document.querySelector('.menu-wrapper');
-
-function checkScroll() {
-    menuWrapper.classList.toggle('scrolling', window.scrollY > 50);
-}
-
-window.addEventListener('scroll', checkScroll);
-checkScroll();
+window.addEventListener('scroll', function() {
+    const menuWrapper = document.querySelector('.menu-wrapper');
+    
+    // Nếu cuộn xuống quá 50px thì thêm class scrolling, ngược lại thì xóa đi
+    if (window.scrollY > 50) {
+        menuWrapper.classList.add('scrolling');
+    } else {
+        menuWrapper.classList.remove('scrolling');
+    }
+});
