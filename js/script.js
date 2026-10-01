@@ -13,27 +13,25 @@ if (menuButton && mainNav) {
 
 
 /* =========================================================
-   MENU TRONG SUỐT KHI CUỘN
+   MENU: TRONG SUỐT Ở ĐẦU TRANG, NỀN TRẮNG KHI ĐÃ CUỘN
    ========================================================= */
 
 const menuWrapper = document.querySelector(".menu-wrapper");
-let scrollTimer = null;
 
-if (menuWrapper) {
+function updateMenuBackground() {
+    if (!menuWrapper) return;
 
-    window.addEventListener("scroll", () => {
-
+    if (window.scrollY > 10) {
         menuWrapper.classList.add("scrolling");
-
-        clearTimeout(scrollTimer);
-
-        scrollTimer = setTimeout(() => {
-            menuWrapper.classList.remove("scrolling");
-        }, 700);
-
-    });
-
+    } else {
+        menuWrapper.classList.remove("scrolling");
+    }
 }
+
+window.addEventListener("scroll", updateMenuBackground);
+updateMenuBackground(); // chạy 1 lần khi tải trang (phòng khi tải lại giữa trang)
+
+
 
 
 
@@ -556,3 +554,4 @@ window.addEventListener('scroll', function() {
         menuWrapper.classList.remove('scrolling');
     }
 });
+
