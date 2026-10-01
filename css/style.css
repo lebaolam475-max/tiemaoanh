@@ -532,7 +532,7 @@ ul {
     justify-content: space-around;
 }
 
-
+/*phần điện thoại */
 .mobile-burger span {
 
     display: block;
@@ -540,7 +540,7 @@ ul {
     width: 25px;
     height: 2px;
 
-    background: #fff;
+    background: #222;
 }
 
 
@@ -634,6 +634,7 @@ ul {
         right: 0;
 
         top: 80px;
+        
 
         padding: 20px 30px;
 
@@ -664,14 +665,22 @@ ul {
         width: 100%;
     }
 
-
+    /* phần mầu ở thanh thu nhỏ màn */
     .main-nav li a {
 
-        padding: 12px 0;
+    padding: 12px 0;
 
-        font-size: 12px;
+    font-size: 12px;
 
-        letter-spacing: .12em;
+    letter-spacing: .12em;
+
+    color: #fff;                    
+
+    border-bottom: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .main-nav li a:hover {
+        color: #bdbdbd;
     }
 
 
@@ -695,9 +704,9 @@ ul {
 
     /* 3 cột */
 
-    .masonry-container .masonry-box {
-
-        width: 33.3333%;
+        /* 3 cột */
+    .masonry-container {
+        column-count: 4;
     }
 }
 
@@ -710,9 +719,9 @@ ul {
 
     /* 1 cột */
 
-    .masonry-container .masonry-box {
-
-        width: 100%;
+       /* 2 cột */
+    .masonry-container {
+        column-count: 2;
     }
 
 
@@ -732,6 +741,14 @@ ul {
 
         padding: 20px;
     }
+
+        .simple-section {
+        padding: 60px 25px;
+    }
+
+    .footer {
+        padding: 25px;
+    }
 }
 
 
@@ -740,6 +757,11 @@ ul {
    ================================================== */
 
 @media (max-width: 440px) {
+
+        /* 1 cột */
+    .masonry-container {
+        column-count: 1;
+    }
 
     .menu-wrapper {
 
