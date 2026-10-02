@@ -1,1386 +1,556 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    width: 100%;
-    min-height: 100%;
-}
-
-body {
-    font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 22px;
-    color: #656565;
-    background: #ffffff;
-    overflow-x: hidden;
-}
-
-a {
-    color: #222;
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-
-/* ==================================================
-   THANH MENU NGANG
-   ================================================== */
-
-.menu-wrapper {
-    /* Trạng thái ban đầu: trong suốt */
-    background: transparent;
-
-    width: 100%;
-    height: 100px;
-
-    position: fixed;
-    left: 0;
-    top: 0;
-
-    z-index: 1000;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 40px;
-
-    transition: background 0.4s ease, box-shadow 0.4s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-}
-
-/* Khi cuộn: chuyển sang nền trắng */
-.menu-wrapper.scrolling {
-    background: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-/* LOGO */
-
-.logo {
-    padding: 0;
-    flex-shrink: 0;
-}
-
-.logo a {
-    display: block;
-}
-
-.logo img {
-    display: block;
-
-    width: auto;
-    max-width: 225px;
-    max-height: 55px;
-
-    height: auto;
-}
-
-
-/* ==================================================
-   MENU
-   ================================================== */
-
-.main-nav {
-    display: flex;
-    align-items: center;
-}
-
-
-/* Các menu nằm ngang */
-
-.main-nav ul {
-    display: flex;
-    align-items: center;
-
-    gap: 25px;
-}
-
-
-/* từng menu */
-
-.main-nav li {
-    display: block;
-    width: auto;
-}
-
-
-.main-nav li a {
-    display: block;
-
-    line-height: 22px;
-    padding: 6px 0;
-
-    /* Trạng thái ban đầu: chữ trắng, nổi trên ảnh */
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-
-    white-space: nowrap;
-
-    transition: color .3s ease, text-shadow .3s ease;
-}
-
-/* Khi cuộn: nền menu trắng nên chữ đổi sang đen, bỏ bóng */
-.menu-wrapper.scrolling .main-nav li a {
-    color: #222222;
-    text-shadow: none;
-}
-
-
-/* hover */
-
-.main-nav li a:hover {
-    color: #919191;
-}
-
-/* ==================================================
-   GALLERY TRANG CHỦ
-   ================================================== */
-
-.fullmasonry {
-
-    width: 100%;
-
-    /* tránh bị menu che ảnh */
-    padding-top: 80px;
-}
-
-
-/* container ảnh */
-
-.masonry-container {
-
-    width: 100%;
-
-    font-size: 0;
-    line-height: 0;
-}
-
-
-/* mỗi ảnh */
-
-/* ==================================================
-   GALLERY MASONRY - ẢNH XẾP KHÍT NHAU
-   ================================================== */
-
-.masonry-container {
-    width: 100%;
-    column-count: 4;
-    column-gap: 0;
-    font-size: 0;
-    line-height: 0;
-}
-
-/* từng ảnh */
-.masonry-container .masonry-box {
-    width: 100%;
-    display: block;
-
-    margin: 0;
-    padding: 0;
-
-    break-inside: avoid;
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-
-    position: relative;
-
-    font-size: 16px;
-    line-height: normal;
-}
-
-/* khung ảnh */
-.portfolio-thumb {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-
-    position: relative;
-    overflow: hidden;
-
-    background: #eee;
-}
-
-/* link */
-.portfolio-thumb a {
-    display: block;
-    position: relative;
-    overflow: hidden;
-}
-
-/* ảnh */
-.portfolio-thumb img {
-    display: block;
-
-    width: 100%;
-    height: auto;
-
-    min-height: 0;
-
-    object-fit: cover;
-
-    margin: 0;
-    padding: 0;
-
-    transition:
-        transform .55s ease,
-        filter .4s ease;
-}
-
-/* hover hiệu ứng ảnh */
-.portfolio-thumb {
-    overflow: hidden;
-}
-
-.portfolio-thumb img {
-    display: block;
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    transform: scale(1);
-}
-
-/* Giữ chuột trên ảnh */
-.portfolio-thumb:hover img {
-    animation: imageZoom 3.5s ease-in-out infinite;
-}
-
-@keyframes imageZoom {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.08);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* Thu vào → trở ra → lặp lại */
-@keyframes imageBreathing {
-
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(0.93);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* Hiệu ứng thu vào → phóng nhẹ → thu vào */
-@keyframes imageBreath {
-
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(.94);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-
-}
-
-
-/* hover ảnh */
-
-.portfolio-thumb:hover img {
-
-    transform: scale(1.035);
-
-    filter: brightness(.82);
-}
-
-
-/* ==================================================
-   CHỮ VIEW
-   ================================================== */
-
-.view-text {
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -35%);
-
-    width: 58px;
-    height: 58px;
-
-    border: 1px solid #fff;
-
-    border-radius: 50%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: transparent;
-
-    font-size: 10px;
-
-    letter-spacing: .08em;
-
-    opacity: 0;
-
-    transition: .3s ease;
-}
-
-
-.portfolio-thumb:hover .view-text {
-
-    opacity: 1;
-
-    color: #fff;
-}
-
-
-/* ==================================================
-   CÁC TRANG CON
-   ================================================== */
-
-.inner-main {
-
-    padding-top: 80px;
-
-    width: 100%;
-}
-
-
-.inner-title {
-
-    padding: 70px 55px 55px;
-
-    background: #f4f4f4;
-}
-
-
-.inner-title p {
-
-    font-size: 11px;
-
-    letter-spacing: .35em;
-
-    text-transform: uppercase;
-
-    margin-bottom: 15px;
-}
-
-
-.inner-title h1 {
-
-    color: #222;
-
-    font-size: 40px;
-
-    line-height: 1.2;
-
-    font-weight: 400;
-}
-
-
-.gallery-inner {
-
-    width: 100%;
-}
-
-
-/* ==================================================
-   LIGHTBOX
-   ================================================== */
-
-.lightbox-modal {
-
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 5000;
-
-    background: rgba(0, 0, 0, .94);
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 45px;
-}
-
-
-.lightbox-modal.active {
-
-    display: flex;
-}
-
-
-.lightbox-modal > img {
-
-    max-width: 90vw;
-
-    max-height: 90vh;
-
-    width: auto;
-
-    height: auto;
-
-    object-fit: contain;
-}
-
-
-.lightbox-modal button {
-
-    border: 0;
-
-    background: transparent;
-
-    color: #fff;
-
-    cursor: pointer;
-
-    position: fixed;
-
-    z-index: 5001;
-}
-
-
-/* nút đóng */
-
-.close-lightbox {
-
-    top: 20px;
-
-    right: 30px;
-
-    font-size: 42px;
-
-    font-weight: 200;
-}
-
-
-/* nút trước / sau */
-
-.prev-lightbox,
-.next-lightbox {
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    font-size: 65px;
-
-    font-weight: 200;
-
-    padding: 20px;
-}
-
-
-.prev-lightbox {
-    left: 15px;
-}
-
-
-.next-lightbox {
-    right: 15px;
-}
-
-
-/* ==================================================
+/* =========================================================
    MENU MOBILE
-   ================================================== */
-
-.mobile-burger {
-
-    display: none;
-
-    width: 30px;
-    height: 30px;
-
-    border: none;
-
-    background: transparent;
-
-    cursor: pointer;
-
-    flex-direction: column;
-
-    justify-content: space-around;
-}
-
-/*phần điện thoại */
-.mobile-burger span {
-
-    display: block;
-
-    width: 25px;
-    height: 2px;
-
-    background: #222;
-}
-
-
-/* ==================================================
-   TABLET
-   ================================================== */
-
-@media (max-width: 1200px) {
-
-    .menu-wrapper {
-
-        padding: 0 25px;
-    }
-
-
-    .main-nav ul {
-
-        gap: 15px;
-    }
-
-
-    .main-nav li a {
-
-        font-size: 11px;
-
-        letter-spacing: .08em;
-    }
-}
-
-
-/* ==================================================
-   MOBILE / TABLET
-   ================================================== */
-
-@media (max-width: 1024px) {
-
-    /* thanh header */
-
-    .menu-wrapper {
-
-        width: 100%;
-
-        height: 80px;
-
-        padding: 0 30px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-    }
-
-
-    /* logo */
-
-    .logo {
-
-        padding: 0;
-    }
-
-
-    .logo img {
-
-        max-height: 48px;
-
-        width: auto;
-
-        max-width: 230px;
-    }
-
-
-    /* nút 3 gạch */
-
-    .mobile-burger {
-
-        display: flex;
-    }
-
-
-    /* menu mặc định ẩn */
-
-    .main-nav {
-
-        display: none;
-
-        position: absolute;
-
-        left: 0;
-
-        right: 0;
-
-        top: 80px;
-        
-
-        padding: 20px 30px;
-
-        background: #222;
-    }
-
-
-    /* khi bấm nút */
-
-    .main-nav.active {
-
-        display: block;
-    }
-
-
-    /* menu mobile chuyển thành dọc */
-
-    .main-nav ul {
-
-        display: block;
-    }
-
-
-    .main-nav li {
-
-        display: block;
-
-        width: 100%;
-    }
-
-    /* phần mầu ở thanh thu nhỏ màn */
-    .main-nav li a {
-
-    padding: 12px 0;
-
-    font-size: 12px;
-
-    letter-spacing: .12em;
-
-    color: #fff;                    
-
-    border-bottom: 1px solid rgba(255, 255, 255, .12);
-    }
-
-    .main-nav li a:hover {
-        color: #bdbdbd;
-    }
-
-
-    /* gallery */
-
-    .fullmasonry {
-
-        padding-left: 0;
-
-        padding-top: 80px;
-    }
-
-
-    .inner-main {
-
-        padding-left: 0;
-
-        padding-top: 80px;
-    }
-
-
-    /* 3 cột */
-
-        /* 3 cột */
-    .masonry-container {
-        column-count: 4;
-    }
-}
-
-
-/* ==================================================
-   MOBILE
-   ================================================== */
-
-@media (max-width: 700px) {
-
-    /* 1 cột */
-
-       /* 2 cột */
-    .masonry-container {
-        column-count: 2;
-    }
-
-
-    .inner-title {
-
-        padding: 45px 25px;
-    }
-
-
-    .inner-title h1 {
-
-        font-size: 32px;
-    }
-
-
-    .lightbox-modal {
-
-        padding: 20px;
-    }
-
-        .simple-section {
-        padding: 60px 25px;
-    }
-
-    .footer {
-        padding: 25px;
-    }
-}
-
-
-/* ==================================================
-   ĐIỆN THOẠI NHỎ
-   ================================================== */
-
-@media (max-width: 440px) {
-
-        /* 1 cột */
-    .masonry-container {
-        column-count: 1;
-    }
-
-    .menu-wrapper {
-
-        padding: 0 20px;
-    }
-
-
-    .logo img {
-
-        max-width: 180px;
-    }
-}
-
-
-/* ==================================================
-   BÁO GIÁ / LIÊN HỆ
-   ================================================== */
-
-/*
-   Trước đây có:
-
-   margin-left: 300px;
-
-   Vì menu cũ nằm bên trái.
-
-   Bây giờ menu nằm ngang nên PHẢI bỏ margin-left.
-*/
-
-.simple-section {
-
-    margin-left: 0;
-
-    width: 100%;
-
-    padding: 100px 60px;
-
-    background: #f4f4f4;
-
-    color: #222;
-}
-
-
-.simple-section h2 {
-
-    font-size: 30px;
-
-    font-weight: 400;
-
-    letter-spacing: .08em;
-
-    margin-bottom: 20px;
-}
-
-
-.simple-section p {
-
-    margin-bottom: 8px;
-}
-
-
-/* ==================================================
-   FOOTER
-   ================================================== */
-
-.footer {
-
-    margin-left: 0;
-
-    width: 100%;
-
-    padding: 25px 60px;
-
-    background: #222;
-
-    color: #fff;
-
-    font-size: 12px;
-}
-
-
-/* ==================================================
-   BÁO GIÁ / FOOTER MOBILE
-   ================================================== */
-
-@media (max-width: 1024px) {
-
-    .simple-section,
-    .footer {
-
-        margin-left: 0;
-
-        width: 100%;
-    }
-}
-
-/* ==================================================
-   ALBUM
-   ================================================== */
-
-.album-modal {
-    display: none;
-
-    position: fixed;
-    inset: 0;
-
-    z-index: 6000;
-
-    background: rgba(0, 0, 0, 0.96);
-
-    overflow-y: auto;
-
-    padding: 80px 40px 50px;
-}
-
-.album-modal.active {
-    display: block;
-}
-
-.album-content {
-    width: 100%;
-    max-width: 1500px;
-    margin: 0 auto;
-}
-
-#albumTitle {
-    color: #fff;
-
-    text-align: center;
-
-    font-size: 28px;
-    font-weight: 400;
-
-    letter-spacing: .12em;
-
-    margin-bottom: 40px;
-}
-
-.album-close {
-    position: fixed;
-
-    top: 20px;
-    right: 30px;
-
-    z-index: 6001;
-
-    border: none;
-    background: transparent;
-
-    color: #fff;
-
-    font-size: 45px;
-    font-weight: 200;
-
-    cursor: pointer;
-}
-
-.album-gallery {
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 5px;
-}
-
-.album-gallery-item {
-    position: relative;
-
-    overflow: hidden;
-
-    cursor: pointer;
-}
-
-.album-gallery-item img {
-    display: block;
-
-    width: 100%;
-    height: 320px;
-
-    object-fit: cover;
-
-    transition: transform .6s ease,
-                filter .5s ease;
-}
-
-.album-gallery-item:hover img {
-    transform: scale(1.04);
-    filter: brightness(.8);
-}
-
-
-/* TABLET */
-
-@media (max-width: 1000px) {
-
-    .album-gallery {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-}
-
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-    .album-modal {
-        padding: 70px 10px 30px;
-    }
-
-    .album-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3px;
-    }
-
-    .album-gallery-item img {
-        height: 220px;
-    }
-
-}
-/* ==================================================
-   ALBUM POPUP
-   ================================================== */
-
-.album-modal {
-    display: none !important;
-
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-
-    z-index: 99999 !important;
-
-    background: rgba(0, 0, 0, 0.96) !important;
-
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-
-    padding: 80px 40px 50px !important;
-}
-
-.album-modal.active {
-    display: block !important;
-}
-
-.album-content {
-    width: 100%;
-    max-width: 1500px;
-    margin: 0 auto;
-}
-
-#albumTitle {
-    color: #fff;
-
-    text-align: center;
-
-    font-size: 28px;
-    font-weight: 400;
-
-    letter-spacing: .12em;
-
-    margin: 0 0 40px;
-}
-
-.album-close {
-    position: fixed !important;
-
-    top: 15px;
-    right: 25px;
-
-    z-index: 100000;
-
-    width: 50px;
-    height: 50px;
-
-    border: none;
-    background: transparent;
-
-    color: #fff;
-
-    font-size: 45px;
-    font-weight: 200;
-
-    line-height: 1;
-
-    cursor: pointer;
-}
-
-.album-gallery {
-    width: 100%;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 5px;
-}
-
-.album-gallery-item {
-    width: 100%;
-
-    overflow: hidden;
-
-    cursor: pointer;
-}
-
-.album-gallery-item img {
-    display: block;
-
-    width: 100%;
-    height: 300px;
-
-    object-fit: cover;
-
-    transition: transform .5s ease,
-                filter .5s ease;
-}
-
-.album-gallery-item:hover img {
-    transform: scale(1.03);
-    filter: brightness(.8);
-}
-
-
-/* TABLET */
-
-@media (max-width: 1000px) {
-
-    .album-gallery {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-}
-
-
-/* ĐIỆN THOẠI */
-
-@media (max-width: 600px) {
-
-    .album-modal {
-        padding: 70px 10px 30px !important;
-    }
-
-    .album-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3px;
-    }
-
-    .album-gallery-item img {
-        height: 220px;
-    }
-
-}
-/* =========================================================
-   TRANG ALBUM
    ========================================================= */
 
-.album-page-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
+const menuButton = document.getElementById("mobileBurger");
+const mainNav = document.getElementById("mainNav");
 
-
-.album-page-item {
-    cursor: pointer;
-    overflow: hidden;
-}
-
-
-.album-page-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-
-    transition: transform 0.4s ease;
-}
-
-
-.album-page-item:hover img {
-    transform: scale(1.04);
+if (menuButton && mainNav) {
+    menuButton.addEventListener("click", () => {
+        mainNav.classList.toggle("active");
+    });
 }
 
 
 /* =========================================================
-   LIGHTBOX THUMBNAIL
+   MENU: TRONG SUỐT Ở ĐẦU TRANG, NỀN TRẮNG KHI ĐÃ CUỘN
    ========================================================= */
 
-.lightbox-thumbs {
-    position: absolute;
+const menuWrapper = document.querySelector(".menu-wrapper");
 
-    bottom: 20px;
-    left: 50%;
+function updateMenuBackground() {
+    if (!menuWrapper) return;
 
-    transform: translateX(-50%);
-
-    width: 80%;
-
-    display: flex;
-
-    gap: 10px;
-
-    overflow-x: auto;
-
-    padding: 10px;
+    if (window.scrollY > 10) {
+        menuWrapper.classList.add("scrolling");
+    } else {
+        menuWrapper.classList.remove("scrolling");
+    }
 }
 
-
-.lightbox-thumbs img {
-    width: 70px;
-    height: 70px;
-
-    object-fit: cover;
-
-    cursor: pointer;
-
-    opacity: 0.6;
-
-    flex-shrink: 0;
-
-    border: 2px solid transparent;
-}
+window.addEventListener("scroll", updateMenuBackground);
+updateMenuBackground(); // chạy 1 lần khi tải trang (phòng khi tải lại giữa trang)
 
 
-.lightbox-thumbs img:hover {
-    opacity: 1;
-}
 
 
-.lightbox-thumbs img.active-thumb {
-    opacity: 1;
 
-    border-color: white;
+/* =========================================================
+   DỮ LIỆU ALBUM
+   ========================================================= */
+
+const albums = {
+
+    "album-01": {
+        title: "FOOD & BEVERAGE 01",
+
+        images: [
+            "images/food&drink/men/a1.jpg",
+            "images/food&drink/men/a2.jpg",
+            "images/food&drink/men/a3.jpg",
+            "images/food&drink/men/a4.jpg",
+            "images/food&drink/men/a5.jpg",
+            "images/food&drink/men/a6.jpg",
+            "images/food&drink/men/a7.jpg",
+            "images/food&drink/men/a8.jpg"
+        ]
+    },
+
+    "album-02": {
+        title: "FOOD & BEVERAGE 02",
+
+        images: [
+            "images/food&drink/concept/a1.jpg",
+            "images/food&drink/concept/a2.jpg",
+            "images/food&drink/concept/a3.jpg",
+            "images/food&drink/concept/a4.jpg",
+            "images/food&drink/concept/a5.jpg",
+            "images/food&drink/concept/a6.jpg",
+        ]
+    },
+
+    "album-03": {
+        title: "FOOD & BEVERAGE 03",
+
+        images: [
+            "images/food&drink/nuoc/a1.jpg",
+            "images/food&drink/nuoc/a2.jpg",
+            "images/food&drink/nuoc/a3.jpg",
+            "images/food&drink/nuoc/a4.jpg",
+            "images/food&drink/nuoc/a5.jpg",
+            "images/food&drink/nuoc/a6.jpg",
+        ]
+    }
+
+};
+
+
+/* =========================================================
+   ALBUM ELEMENT
+   ========================================================= */
+
+const albumModal = document.getElementById("albumModal");
+const albumTitle = document.getElementById("albumTitle");
+const albumGallery = document.getElementById("albumGallery");
+const albumClose = document.getElementById("albumClose");
+
+
+/* =========================================================
+   LIGHTBOX ELEMENT (Bổ sung thêm lightboxThumbs)
+   ========================================================= */
+
+const lightboxModal = document.getElementById("lightboxModal");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxThumbs = document.getElementById("lightboxThumbs"); // Thêm dòng này
+
+const closeLightboxButton = document.querySelector(".close-lightbox");
+const prevLightboxButton = document.querySelector(".prev-lightbox");
+const nextLightboxButton = document.querySelector(".next-lightbox");
+
+let currentImages = [];
+let currentIndex = 0;
+
+
+/* =========================================================
+   HÀM CẬP NHẬT GIAO DIỆN LIGHTBOX (Ảnh chính + Thumbnail active)
+   ========================================================= */
+
+function updateLightbox() {
+    if (!lightboxImage || currentImages.length === 0) return;
+
+    // Cập nhật ảnh chính
+    lightboxImage.src = currentImages[currentIndex];
+
+    // Cập nhật trạng thái active cho danh sách thumbnail nếu có
+    if (lightboxThumbs) {
+        const thumbItems = lightboxThumbs.querySelectorAll("img");
+        thumbItems.forEach((thumb, idx) => {
+            if (idx === currentIndex) {
+                thumb.classList.add("active-thumb");
+                // Tự động cuộn thanh thumbnail đến ảnh đang chọn
+                thumb.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+            } else {
+                thumb.classList.remove("active-thumb");
+            }
+        });
+    }
 }
 
 
 /* =========================================================
-   MOBILE
+   MỞ LIGHTBOX
    ========================================================= */
 
-@media (max-width: 768px) {
+function openLightbox(images, index) {
+    if (!lightboxModal || !lightboxImage) return;
+    if (!images || images.length === 0) return;
 
-    .album-page-gallery {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    currentImages = images;
+    currentIndex = (index + currentImages.length) % currentImages.length;
+
+    // Tạo danh sách các ảnh nhỏ (thumbnails) bên trong lightbox
+    if (lightboxThumbs) {
+        lightboxThumbs.innerHTML = "";
+        currentImages.forEach((imgSrc, idx) => {
+            const thumbImg = document.createElement("img");
+            thumbImg.src = imgSrc;
+            thumbImg.alt = `Thumbnail ${idx + 1}`;
+            
+            // Khi click vào 1 ảnh nhỏ trong danh sách -> chuyển đến ảnh đó
+            thumbImg.addEventListener("click", (event) => {
+                event.stopPropagation();
+                currentIndex = idx;
+                updateLightbox();
+            });
+
+            lightboxThumbs.appendChild(thumbImg);
+        });
+    }
+
+    updateLightbox();
+    lightboxModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+
+/* =========================================================
+   ĐÓNG LIGHTBOX
+   ========================================================= */
+
+function closeLightbox() {
+    if (!lightboxModal) return;
+    lightboxModal.classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+
+/* =========================================================
+   ẢNH TRƯỚC
+   ========================================================= */
+
+function previousImage() {
+    if (currentImages.length === 0) return;
+    currentIndex--;
+    if (currentIndex < 0) {
+        currentIndex = currentImages.length - 1;
+    }
+    updateLightbox();
+}
+
+
+/* =========================================================
+   ẢNH SAU
+   ========================================================= */
+
+function nextImage() {
+    if (currentImages.length === 0) return;
+    currentIndex++;
+    if (currentIndex >= currentImages.length) {
+        currentIndex = 0;
+    }
+    updateLightbox();
+}
+
+
+/* =========================================================
+   MỞ ALBUM
+   ========================================================= */
+
+function openAlbum(albumID) {
+
+    const album = albums[albumID];
+
+    if (!album) {
+
+        console.error(
+            "Không tìm thấy album:",
+            albumID
+        );
+
+        return;
+    }
+
+    if (!albumModal || !albumTitle || !albumGallery) {
+
+        console.error(
+            "Thiếu albumModal / albumTitle / albumGallery"
+        );
+
+        return;
     }
 
 
-    .lightbox-thumbs {
-        width: 90%;
+    console.log("Đang mở:", albumID);
+
+
+    albumTitle.textContent =
+        album.title;
+
+    albumGallery.innerHTML = "";
+
+
+    album.images.forEach((image, index) => {
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "album-gallery-item";
+
+
+        const img =
+            document.createElement("img");
+
+        img.src = image;
+
+        img.alt =
+            `${album.title} - ${index + 1}`;
+
+
+        img.onerror = function () {
+
+            console.error(
+                "Không tìm thấy ảnh:",
+                image
+            );
+
+            this.src =
+                "images/placeholder.svg";
+        };
+
+
+        item.appendChild(img);
+
+        albumGallery.appendChild(item);
+
+
+        /* Click ảnh trong album */
+
+        item.addEventListener("click", () => {
+
+            openLightbox(
+                album.images,
+                index
+            );
+
+        });
+
+    });
+
+
+    albumModal.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/* =========================================================
+   CLICK ẢNH COVER
+   ========================================================= */
+
+const albumLinks =
+    document.querySelectorAll(".album-link");
+
+albumLinks.forEach((link) => {
+
+    link.addEventListener("click", (event) => {
+
+        event.preventDefault();
+
+        const albumID =
+            link.getAttribute("data-album");
+
+        openAlbum(albumID);
+
+    });
+
+});
+
+
+/* =========================================================
+   LIGHTBOX THƯỜNG
+   ========================================================= */
+
+const normalLightboxLinks =
+    Array.from(
+        document.querySelectorAll(".lightbox")
+    );
+
+if (normalLightboxLinks.length > 0) {
+
+    const normalImages =
+        normalLightboxLinks.map((link) => {
+
+            return link.getAttribute("href");
+
+        });
+
+
+    normalLightboxLinks.forEach(
+        (link, index) => {
+
+            link.addEventListener(
+                "click",
+                (event) => {
+
+                    event.preventDefault();
+
+                    openLightbox(
+                        normalImages,
+                        index
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   NÚT LIGHTBOX
+   ========================================================= */
+
+closeLightboxButton?.addEventListener(
+    "click",
+    closeLightbox
+);
+
+
+prevLightboxButton?.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+        previousImage();
+
     }
+);
 
 
-    .lightbox-thumbs img {
-        width: 55px;
-        height: 55px;
+nextLightboxButton?.addEventListener(
+    "click",
+    (event) => {
+
+        event.stopPropagation();
+
+        nextImage();
+
     }
+);
 
-}
+
+/* =========================================================
+   CLICK RA NGOÀI LIGHTBOX
+   ========================================================= */
+
+lightboxModal?.addEventListener(
+    "click",
+    (event) => {
+
+        if (event.target === lightboxModal) {
+
+            closeLightbox();
+
+        }
+
+    }
+);
 
 
-/* Ảnh lớn không đè lên dải thumbnail */
-.lightbox-modal > img {
-    max-height: 72vh;
-}
+/* =========================================================
+   ĐÓNG ALBUM
+   ========================================================= */
 
-/* Link "← Food & Beverage" trên tiêu đề */
-.inner-title p a {
-    color: inherit;
-}
-/* DANH SÁCH BỘ ẢNH (food.html) */
-.album-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px 30px;
-    padding: 60px 40px;
-}
+albumClose?.addEventListener(
+    "click",
+    () => {
 
-.album-card {
-    display: block;
-    color: #222;
-}
+        albumModal.classList.remove("active");
 
-.album-cover {
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
-    background: #eee;
-}
+        document.body.style.overflow = "";
 
-.album-cover img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .6s ease;
-}
+    }
+);
 
-.album-card:hover .album-cover img {
-    transform: scale(1.05);
-}
 
-.album-name {
-    margin-top: 18px;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 27px;
-    text-transform: uppercase;
-    color: #222;
-}
+/* =========================================================
+   CLICK RA NGOÀI ALBUM
+   ========================================================= */
 
-@media (max-width: 1024px) {
-    .album-list { grid-template-columns: repeat(2, 1fr); padding: 40px 25px; }
-}
+albumModal?.addEventListener(
+    "click",
+    (event) => {
 
-@media (max-width: 700px) {
-    .album-list { grid-template-columns: 1fr; gap: 40px; }
-    /* ẢNH TRONG ALBUM: xếp khít nhau */
-.album-page-gallery {
-    display: block;
-    column-count: 3;
-    column-gap: 0;
-}
+        if (event.target === albumModal) {
 
-.album-page-item {
-    break-inside: avoid;
-    margin: 0;
-    padding: 0;
-    line-height: 0;
-    cursor: pointer;
-    overflow: hidden;
-}
+            albumModal.classList.remove("active");
 
-.album-page-item img {
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: transform .5s ease, filter .4s ease;
-}
+            document.body.style.overflow = "";
 
-.album-page-item:hover img {
-    transform: scale(1.04);
-    filter: brightness(.85);
-}
+        }
 
-@media (max-width: 1024px) {
-    .album-page-gallery { column-count: 2; }
-}
+    }
+);
 
-@media (max-width: 600px) {
-    .album-page-gallery { column-count: 1; }
-}
-}
-.album-page-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    column-count: auto;
-}
 
-.album-page-item {
-    aspect-ratio: 3 / 4;
-}
+/* =========================================================
+   BÀN PHÍM
+   ========================================================= */
 
-.album-page-item img {
-    height: 100%;
-    object-fit: cover;
-}
-/* ==================================================
-   TRANG CHỦ: ảnh đan xen cao thấp khác nhau
-   ================================================== */
+document.addEventListener(
+    "keydown",
+    (event) => {
 
-.fullmasonry .portfolio-thumb,
-.fullmasonry .portfolio-thumb a {
-    height: 100%;
-}
+        if (
+            lightboxModal &&
+            lightboxModal.classList.contains("active")
+        ) {
 
-.fullmasonry .portfolio-thumb img {
-    height: 100%;
-    object-fit: cover;
-}
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
 
-/* mẫu lặp lại mỗi 5 ảnh, bạn đổi số tùy ý */
-.fullmasonry .masonry-box:nth-child(5n+1) .portfolio-thumb { aspect-ratio: 3 / 4; }
-.fullmasonry .masonry-box:nth-child(5n+2) .portfolio-thumb { aspect-ratio: 1 / 1; }
-.fullmasonry .masonry-box:nth-child(5n+3) .portfolio-thumb { aspect-ratio: 4 / 5; }
-.fullmasonry .masonry-box:nth-child(5n+4) .portfolio-thumb { aspect-ratio: 4 / 3; }
-.fullmasonry .masonry-box:nth-child(5n+5) .portfolio-thumb { aspect-ratio: 2 / 3; }
+            if (event.key === "ArrowLeft") {
+                previousImage();
+            }
 
-.my-columns {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-}
-.my-col {
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-/* ghi đè luật của masonry cũ */
-.my-col .masonry-box {
-  position: static !important;
-  float: none !important;
-  width: 100% !important;
-  margin: 0 !important;
-}
-.my-col .portfolio-thumb img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+            if (event.key === "ArrowRight") {
+                nextImage();
+            }
 
-@media (max-width: 768px) {
-  .my-columns { flex-wrap: wrap; }
-  .my-col { flex: 0 0 50%; }
-}
+            return;
+        }
+
+
+        if (
+            albumModal &&
+            albumModal.classList.contains("active")
+        ) {
+
+            if (event.key === "Escape") {
+
+                albumModal.classList.remove("active");
+
+                document.body.style.overflow = "";
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SWIPE ĐIỆN THOẠI
+   ========================================================= */
+
+let touchStartX = 0;
+
+lightboxModal?.addEventListener(
+    "touchstart",
+    (event) => {
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+
+    }
+);
+
+
+lightboxModal?.addEventListener(
+    "touchend",
+    (event) => {
+
+        const touchEndX =
+            event.changedTouches[0].screenX;
+
+        const distance =
+            touchEndX - touchStartX;
+
+
+        if (distance < -50) {
+            nextImage();
+        }
+
+        if (distance > 50) {
+            previousImage();
+        }
+
+    }
+);
+
+window.addEventListener('scroll', function() {
+    const menuWrapper = document.querySelector('.menu-wrapper');
+    
+    // Nếu cuộn xuống quá 50px thì thêm class scrolling, ngược lại thì xóa đi
+    if (window.scrollY > 50) {
+        menuWrapper.classList.add('scrolling');
+    } else {
+        menuWrapper.classList.remove('scrolling');
+    }
+});
