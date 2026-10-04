@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ẢNH SẢN PHẨM - Tiệm Ảo Ảnh</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ẢNH SẢN PHẨM</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="site inner-page">
+
+<body class="site inner-page page-san-pham">
 
 <header class="menu-wrapper">
+
     <div class="logo">
         <a href="index.html">
-            <img src="images/logo.png" alt="Tiệm Ảo Ảnh Studio"
-                 onerror="this.src='images/logo-placeholder.svg'">
+            <img src="./images/logo4.png" alt="Tiệm Ảo Ảnh Studio">
         </a>
     </div>
+
     <button class="mobile-burger" id="mobileBurger" aria-label="Mở menu">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
     </button>
+
     <nav class="main-nav" id="mainNav">
         <ul>
             <li><a href="san-pham.html">ẢNH SẢN PHẨM</a></li>
@@ -30,99 +38,146 @@
             <li><a href="index.html#lien-he">LIÊN HỆ</a></li>
         </ul>
     </nav>
+
 </header>
 
+
 <main class="inner-main">
+
     <div class="inner-title">
-        <p>TIỆM ẢO ẢNH STUDIO</p>
+        <p>Portfolio</p>
         <h1>ẢNH SẢN PHẨM</h1>
+        
     </div>
+    
+    
 
     <div class="gallery-inner">
-        <ul class="masonry-container">
-        <li class="masonry-box">
-            <div class="portfolio-thumb">
-                <a href="images/san-pham/san-pham-01.jpg" class="lightbox">
-                    <img src="images/san-pham/san-pham-01.jpg" alt="ẢNH SẢN PHẨM 1"
-                         onerror="this.src='images/placeholder.svg'">
-                    <span class="view-text">VIEW</span>
-                </a>
-            </div>
-        </li>
-        <li class="masonry-box">
-            <div class="portfolio-thumb">
-                <a href="images/san-pham/san-pham-02.jpg" class="lightbox">
-                    <img src="images/san-pham/san-pham-02.jpg" alt="ẢNH SẢN PHẨM 2"
-                         onerror="this.src='images/placeholder.svg'">
-                    <span class="view-text">VIEW</span>
-                </a>
-            </div>
-        </li>
-        <li class="masonry-box">
-            <div class="portfolio-thumb">
-                <a href="images/san-pham/san-pham-03.jpg" class="lightbox">
-                    <img src="images/san-pham/san-pham-03.jpg" alt="ẢNH SẢN PHẨM 3"
-                         onerror="this.src='images/placeholder.svg'">
-                    <span class="view-text">VIEW</span>
-                </a>
-            </div>
-        </li>
-        <li class="masonry-box">
-            <div class="portfolio-thumb">
-                <a href="images/san-pham/san-pham-04.jpg" class="lightbox">
-                    <img src="images/san-pham/san-pham-04.jpg" alt="ẢNH SẢN PHẨM 4"
-                         onerror="this.src='images/placeholder.svg'">
-                    <span class="view-text">VIEW</span>
-                </a>
-            </div>
-        </li>
-        <li class="masonry-box">
-            <div class="portfolio-thumb">
-                <a href="images/san-pham/san-pham-05.jpg" class="lightbox">
-                    <img src="images/san-pham/san-pham-05.jpg" alt="ẢNH SẢN PHẨM 5"
-                         onerror="this.src='images/placeholder.svg'">
-                    <span class="view-text">VIEW</span>
-                </a>
-            </div>
-        </li>
-        <li class="masonry-box">
-            <div class="portfolio-thumb">
-                <a href="images/san-pham/san-pham-06.jpg" class="lightbox">
-                    <img src="images/san-pham/san-pham-06.jpg" alt="ẢNH SẢN PHẨM 6"
-                         onerror="this.src='images/placeholder.svg'">
-                    <span class="view-text">VIEW</span>
-                </a>
-            </div>
-        </li>
-        <li class="masonry-box">
-            <div class="portfolio-thumb">
-                <a href="images/san-pham/san-pham-07.jpg" class="lightbox">
-                    <img src="images/san-pham/san-pham-07.jpg" alt="ẢNH SẢN PHẨM 7"
-                         onerror="this.src='images/placeholder.svg'">
-                    <span class="view-text">VIEW</span>
-                </a>
-            </div>
-        </li>
-        <li class="masonry-box">
-            <div class="portfolio-thumb">
-                <a href="images/san-pham/san-pham-08.jpg" class="lightbox">
-                    <img src="images/san-pham/san-pham-08.jpg" alt="ẢNH SẢN PHẨM 8"
-                         onerror="this.src='images/placeholder.svg'">
-                    <span class="view-text">VIEW</span>
-                </a>
-            </div>
-        </li>
-        </ul>
-    </div>
-</main>
+        <div class="album-list">
+    <a class="album-card" href="album.html?album=sp-01">
+        <div class="album-cover">
+            <img src="images/sanpham/1.gombut/a1.jpg" alt="Mỹ phẩm">
+        </div>
+        <h3 class="album-name">Mỹ phẩm</h3>
+    </a>
 
-<div class="lightbox-modal" id="lightboxModal">
-    <button class="close-lightbox" aria-label="Đóng">×</button>
-    <button class="prev-lightbox" aria-label="Ảnh trước">‹</button>
-    <img id="lightboxImage" src="" alt="">
-    <button class="next-lightbox" aria-label="Ảnh sau">›</button>
+    <a class="album-card" href="album.html?album=sp-02">
+        <div class="album-cover">
+            <img src="images/sanpham/2.sachum.b/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+
+    <a class="album-card" href="album.html?album=sp-03">
+        <div class="album-cover">
+            <img src="images/sanpham/3.ruocnuimuong_quatet.c/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-04">
+        <div class="album-cover">
+            <img src="images/sanpham/4.anti_honax.d/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-05">
+        <div class="album-cover">
+            <img src="images/sanpham/5.quatet.e/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-06">
+        <div class="album-cover">
+            <img src="images/sanpham/6.gel.f/a1.JPG" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-07">
+        <div class="album-cover">
+            <img src="images/sanpham/7.binh.g/a1.JPG" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-08">
+        <div class="album-cover">
+            <img src="images/sanpham/8.bo_san_pham/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-09">
+        <div class="album-cover">
+            <img src="images/sanpham/9.giay_an.i/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-10">
+        <div class="album-cover">
+            <img src="images/sanpham/10.gombut.k/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-11">
+        <div class="album-cover">
+            <img src="images/sanpham/11.miengrong.l/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-12">
+        <div class="album-cover">
+            <img src="images/sanpham/12.mindecor.m/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-13">
+        <div class="album-cover">
+            <img src="images/sanpham/13.ngocson.n/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-14">
+        <div class="album-cover">
+            <img src="images/sanpham/14.ruouvang.o/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-15">
+        <div class="album-cover">
+            <img src="images/sanpham/15.ngam_tuong/a1.JPG" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-16">
+        <div class="album-cover">
+            <img src="images/sanpham/16.thuc_phamcora/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-17">
+        <div class="album-cover">
+            <img src="images/sanpham/17.thuoc/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
+    <a class="album-card" href="album.html?album=sp-18">
+        <div class="album-cover">
+            <img src="images/sanpham/18.trang_suc/a1.jpg" alt="Trang sức">
+        </div>
+        <h3 class="album-name">Trang sức</h3>
+    </a>
 </div>
 
+        
+    </div>
+
+</main>
+
+
+<footer class="footer">
+    © 2026 Tiệm Ảo Ảnh Studio
+</footer>
+
+
 <script src="js/script.js"></script>
+
 </body>
 </html>

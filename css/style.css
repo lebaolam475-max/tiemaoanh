@@ -70,6 +70,7 @@ ul {
 .logo {
     padding: 0;
     flex-shrink: 0;
+    margin-left: 6cm;
 }
 
 .logo a {
@@ -80,12 +81,17 @@ ul {
     display: block;
 
     width: auto;
-    max-width: 225px;
-    max-height: 55px;
+    max-width: 170px;
+    height: clamp(60px, 8vw, 120px);
 
-    height: auto;
+    height: auto; 
+    
+   
 }
-
+.inner-page .main-nav a {
+    color: #222;
+    text-shadow: none;
+}
 
 /* ==================================================
    MENU
@@ -115,8 +121,6 @@ ul {
 }
 
 
-/* chữ menu */
-
 .main-nav li a {
     display: block;
 
@@ -126,7 +130,7 @@ ul {
     /* Trạng thái ban đầu: chữ trắng, nổi trên ảnh */
     color: #ffffff;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
     letter-spacing: .12em;
     text-transform: uppercase;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
@@ -418,61 +422,107 @@ ul {
    LIGHTBOX
    ================================================== */
 
+/* ===== LIGHTBOX ===== */
 .lightbox-modal {
-
-    display: none;
-
     position: fixed;
-
     inset: 0;
-
-    z-index: 5000;
-
-    background: rgba(0, 0, 0, .94);
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 45px;
-}
-
-
-.lightbox-modal.active {
-
+    z-index: 9999;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.93);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s ease, visibility .35s ease;
+}
+.lightbox-modal.active {
+    opacity: 1;
+    visibility: visible;
 }
 
-
-.lightbox-modal > img {
-
-    max-width: 90vw;
-
+/* Ảnh to, rõ, không méo, không bị cắt */
+.lightbox-modal #lightboxImage {
+    max-width: 94vw;
     max-height: 90vh;
-
     width: auto;
-
     height: auto;
-
     object-fit: contain;
+    box-shadow: 0 10px 60px rgba(0, 0, 0, .6);
+    transform: scale(.92);
+    opacity: 1;
+    transition: transform .4s cubic-bezier(.2, .8, .2, 1), opacity .3s ease;
+}
+.lightbox-modal.active #lightboxImage {
+    transform: scale(1);
+}
+.lightbox-modal #lightboxImage.is-loading {
+    opacity: 0;
+    transform: scale(.97);
 }
 
+/* Trang album có thanh thumbnail → chừa chỗ bên dưới */
+.lightbox-modal:has(.lightbox-thumbs) #lightboxImage {
+    max-height: calc(100vh - 130px);
+    margin-bottom: 90px;
+}
 
-.lightbox-modal button {
-
-    border: 0;
-
-    background: transparent;
-
+/* Nút điều khiển */
+.close-lightbox,
+.prev-lightbox,
+.next-lightbox {
+    position: absolute;
+    background: none;
+    border: none;
     color: #fff;
-
     cursor: pointer;
+    opacity: .7;
+    transition: opacity .2s, transform .2s;
+    z-index: 2;
+}
+.close-lightbox:hover,
+.prev-lightbox:hover,
+.next-lightbox:hover { opacity: 1; transform: scale(1.15); }
+.close-lightbox { top: 14px; right: 22px; font-size: 44px; }
+.prev-lightbox  { left: 18px;  top: 50%; font-size: 64px; transform: translateY(-50%); }
+.next-lightbox  { right: 18px; top: 50%; font-size: 64px; transform: translateY(-50%); }
+.prev-lightbox:hover, .next-lightbox:hover { transform: translateY(-50%) scale(1.15); }
 
-    position: fixed;
-
-    z-index: 5001;
+/* Thanh thumbnail */
+.lightbox-thumbs {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    padding: 12px;
+    overflow-x: auto;
+    background: rgba(0, 0, 0, .5);
+}
+.lightbox-thumbs img {
+    height: 64px;
+    width: auto;
+    opacity: .45;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: opacity .25s, transform .25s, border-color .25s;
+}
+.lightbox-thumbs img:hover { opacity: .85; }
+.lightbox-thumbs img.active-thumb {
+    opacity: 1;
+    border-color: #fff;
+    transform: translateY(-4px);
 }
 
+/* ===== HIỆU ỨNG HOVER Ở ẢNH NHỎ ===== */
+.portfolio-thumb { overflow: hidden; position: relative; }
+.portfolio-thumb img { transition: transform .6s ease, filter .4s ease; }
+.portfolio-thumb:hover img { transform: scale(1.06); filter: brightness(.65); }
+.portfolio-thumb .view-text {
+    opacity: 0;
+    transition: opacity .3s ease, letter-spacing .4s ease;
+}
+.portfolio-thumb:hover .view-text { opacity: 1; letter-spacing: 4px; }
 
 /* nút đóng */
 
@@ -714,6 +764,7 @@ ul {
         column-count: 4;
     }
 }
+
 
 
 /* ==================================================
@@ -968,7 +1019,75 @@ ul {
     }
 
 }
+/* ===== HEADER MOBILE: logo + burger + menu không chồng nhau ===== */
+@media (max-width: 900px) {
 
+    .menu-wrapper {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        width: 100%;
+        height: 64px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #fff;              /* nền trắng luôn, không bị chữ/ảnh đè xuyên qua */
+        box-shadow: 0 1px 8px rgba(0,0,0,.08);
+        z-index: 1000;
+        box-sizing: border-box;
+    }
+
+    /* Logo: cố định chiều cao, không giãn, không đè burger */
+    .menu-wrapper .logo {
+        position: static;
+        width: auto;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+    }
+    .menu-wrapper .logo a { display: flex; align-items: center; height: 100%; }
+    .menu-wrapper .logo img {
+        height: 40px;
+        width: auto;
+        max-width: 140px;
+        object-fit: contain;
+        display: block;
+    }
+
+    /* Nút burger nằm bên phải */
+    .mobile-burger {
+        position: static;
+        flex: 0 0 auto;
+        margin-left: auto;
+        z-index: 1002;
+    }
+
+    /* Menu xổ xuống dưới header, không đè lên logo */
+    .main-nav {
+        position: absolute;
+        top: 64px;
+        left: 0; right: 0;
+        width: 100%;
+        background: #fff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .4s ease;
+        z-index: 1001;
+    }
+    .main-nav.active {
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 8px 20px rgba(0,0,0,.1);
+    }
+    .main-nav ul { margin: 0; padding: 8px 0; list-style: none; }
+    .main-nav li a { display: block; padding: 14px 20px; }
+
+    /* Chừa chỗ cho header cố định để nội dung không chui xuống dưới */
+    body.site { padding-top: 64px; }
+}
 
 /* MOBILE */
 
@@ -1283,6 +1402,7 @@ ul {
     .album-list { grid-template-columns: repeat(2, 1fr); padding: 40px 25px; }
 }
 
+
 @media (max-width: 700px) {
     .album-list { grid-template-columns: 1fr; gap: 40px; }
     /* ẢNH TRONG ALBUM: xếp khít nhau */
@@ -1385,4 +1505,94 @@ ul {
 @media (max-width: 768px) {
   .my-columns { flex-wrap: wrap; }
   .my-col { flex: 0 0 50%; }
+}
+/* ===== CHUYỂN TRANG (fade) ===== */
+/* ===== CHUYỂN TRANG (chỉ fade, KHÔNG dùng transform trên body) ===== */
+body.site {
+    animation: pageIn .6s ease both;
+}
+@keyframes pageIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+body.page-leaving {
+    opacity: 0;
+    transition: opacity .4s ease;
+}
+/* ===== ALBUM CARD (food.html) ===== */
+.album-card { display: block; overflow: hidden; }
+.album-card .album-cover { overflow: hidden; }
+.album-card .album-cover img {
+    transition: transform .7s cubic-bezier(.2, .8, .2, 1), filter .4s ease;
+}
+.album-card:hover .album-cover img {
+    transform: scale(1.08);
+    filter: brightness(.8);
+}
+.album-card:active .album-cover img { transform: scale(1.02); }
+.album-card .album-name { transition: letter-spacing .4s ease, opacity .3s; }
+.album-card:hover .album-name { letter-spacing: 2px; }
+
+/* ===== ẢNH TRONG TRANG ALBUM: hiện lần lượt ===== */
+.album-page-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: itemIn .6s ease forwards;
+    overflow: hidden;
+    cursor: pointer;
+}
+.album-page-item img { transition: transform .6s ease; }
+.album-page-item:hover img { transform: scale(1.05); }
+@keyframes itemIn {
+    to { opacity: 1; transform: none; }
+}
+.lightbox-modal { overflow: hidden; }
+
+.page-san-pham .album-cover {
+    aspect-ratio: 2 / 3 !important;   /* dài vừa, chỉnh tại đây */
+    height: auto !important;
+    overflow: hidden;
+}
+
+.page-san-pham .album-cover img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block;
+}
+
+
+.page-san-pham .inner-title {
+    background-image:
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),   /* lớp tối để chữ dễ đọc */
+        url("../images/biasanpham.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 420px;               /* chiều cao banner, chỉnh tại đây */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;       /* chữ nằm phía dưới banner */
+}
+
+.page-san-pham .inner-title p,
+.page-san-pham .inner-title h1 {
+    color: #fff;
+}
+
+.page-album .inner-title {
+    display: none !important;
+}
+
+.page-album .inner-main {
+    padding-top: 100px !important;   /* bằng chiều cao thanh menu */
+}
+
+.page-album .gallery-inner {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+}
+
+.page-album .album-page-gallery {
+    gap: 0 !important;
 }

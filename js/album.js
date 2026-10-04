@@ -17,12 +17,16 @@
 
     titleEl.textContent = album.title;
     document.title = album.title + " - Tiệm Ảo Ảnh Studio";
-
+    const back = document.getElementById("albumBack");
+    if (back && album.back) {
+    back.href = album.back;
+    back.textContent = "← " + album.backText;
+}
     album.images.forEach((src, index) => {
 
         const item = document.createElement("div");
         item.className = "album-page-item";
-
+        item.style.animationDelay = (index * 0.08) + "s";
         const img = document.createElement("img");
         img.src = src;
         img.alt = `${album.title} - ${index + 1}`;

@@ -33,7 +33,11 @@ updateMenuBackground(); // chạy 1 lần khi tải trang (phòng khi tải lạ
 
 
 
-
+function makeImages(folder, count, ext = "jpg") {
+    const list = [];
+    for (let i = 1; i <= count; i++) list.push(`${folder}/a${i}.${ext}`);
+    return list;
+}
 
 /* =========================================================
    DỮ LIỆU ALBUM
@@ -41,46 +45,355 @@ updateMenuBackground(); // chạy 1 lần khi tải trang (phòng khi tải lạ
 
 const albums = {
 
-    "album-01": {
-        title: "FOOD & BEVERAGE 01",
-
-        images: [
-            "images/food&drink/men/a1.jpg",
-            "images/food&drink/men/a2.jpg",
-            "images/food&drink/men/a3.jpg",
-            "images/food&drink/men/a4.jpg",
-            "images/food&drink/men/a5.jpg",
-            "images/food&drink/men/a6.jpg",
-            "images/food&drink/men/a7.jpg",
-            "images/food&drink/men/a8.jpg"
-        ]
+    "sp-01": {
+    title: "MỸ PHẨM",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/1.gombut", 6)   // 8 ảnh a1..a8
+    },
+    "sp-02": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/2.sachum.b", 9)
+    },
+    "sp-03": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/3.ruocnuimuong_quatet.c", 12)
+    },
+    "sp-04": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/4.anti_honax.d", 9)
+    },
+    "sp-05": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/5.quatet.e", 8)
+    },
+    "sp-06": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/6.gel.f", 9)
+    },
+    "sp-07": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/san-pham/7.binh.g", 8)
+    },
+    "sp-08": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/8.bo_san_pham", 8)
+    },
+    "sp-09": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/san-pham/9.giay_an.i", 11)
+    },
+    "sp-10": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/10.gombut.k", 12)
+    },
+    "sp-11": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/11.miengrong.l", 4)
+    },
+    "sp-12": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/12.mindecor.m", 13)
+    },
+    "sp-13": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/13.ngocson.n", 4)
+    },
+    "sp-14": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/14.ruouvang.o", 7)
+    },
+    "sp-15": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/15.ngam_tuong", 11)
+    },
+    "sp-16": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/16.thuc_phamcora", 6)
+    },
+    "sp-17": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/17.thuoc", 7)
+    },
+    "sp-18": {
+    title: "TRANG SỨC",
+    back: "sanpham.html",
+    backText: "Ảnh sản phẩm",
+    images: makeImages("images/sanpham/18.trang_suc", 8)
     },
 
-    "album-02": {
-        title: "FOOD & BEVERAGE 02",
 
-        images: [
-            "images/food&drink/concept/a1.jpg",
-            "images/food&drink/concept/a2.jpg",
-            "images/food&drink/concept/a3.jpg",
-            "images/food&drink/concept/a4.jpg",
-            "images/food&drink/concept/a5.jpg",
-            "images/food&drink/concept/a6.jpg",
-        ]
+
+    "dr-01": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/1.dauluotvan", 5)
     },
+    "dr-02": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/2.bio", 24)
+    },
+    "dr-03": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/3", 15)
+    },
+    "dr-04": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/4", 14)
+    },
+    "dr-05": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/5", 10)
+    },
+    "dr-06": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/6", 9)
+    },
+    "dr-07": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/7", 23)
+    },
+    "dr-08": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/8", 7)
+    },
+    "dr-09": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/9", 11)
+    },
+    "dr-10": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/10", 9)
+    },
+    "dr-11": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/11", 10)
+    },
+    "dr-12": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/12", 9)
+    },
+    "dr-13": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/13",6)
+    },
+    "dr-14": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/14", 13)
+    },
+    "dr-15": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/15", 10)
+    },
+    "dr-16": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/16", 5)
+    },
+    "dr-17": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/17", 8)
+    },
+    "dr-18": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/18", 5)
+    },
+    "dr-19": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/19", 11)
+    },
+    "dr-20": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/20", 10)
+    },
+    "dr-21": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/21", 15)
+    },
+    "dr-22": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/22", 6)
+    },
+    "dr-23": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/23", 9)
+    },
+    "dr-24": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/24", 5 )
+    },
+    "dr-25": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/25", 7)
+    },
+    "dr-26": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/26", 8)
+    },
+    "dr-27": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/27", 4)
+    },
+    "dr-28": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/28", 9)
+    },
+    "dr-29": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/29", 4)
+    },
+    "dr-30": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/30", 5)
+    },
+    "dr-31": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/31", 7)
+    },
+    "dr-32": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/32", 9)
+    },
+    "dr-33": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/33", 5)
+    },
+    "dr-34": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/34", 9)
+    },
+    
+    "dr-35": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/35", 11)
+    },
+    "dr-36": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/36", 13)
+    },
+    "dr-37": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/37", 15)
+    },
+    "dr-38": {
+    title: "MOONCAKE 01",
+    back: "food.html",
+    backText: "Mooncake",
+    images: makeImages("images/food&drink/38", 4)
+    },
+    
+   
 
-    "album-03": {
-        title: "FOOD & BEVERAGE 03",
-
-        images: [
-            "images/food&drink/nuoc/a1.jpg",
-            "images/food&drink/nuoc/a2.jpg",
-            "images/food&drink/nuoc/a3.jpg",
-            "images/food&drink/nuoc/a4.jpg",
-            "images/food&drink/nuoc/a5.jpg",
-            "images/food&drink/nuoc/a6.jpg",
-        ]
-    }
+    "dn-01": {
+    title: "DỰ ÁN 01",
+    back: "doanh-nghiep.html",
+    backText: "Ảnh doanh nghiệp",
+    images: makeImages("images/doanh-nghiep/du-an-1", 12)
+},
 
 };
 
@@ -115,27 +428,83 @@ let currentIndex = 0;
    HÀM CẬP NHẬT GIAO DIỆN LIGHTBOX (Ảnh chính + Thumbnail active)
    ========================================================= */
 
-function updateLightbox() {
+/* Chọn: slide | fade | zoom | blur | flip | rotate | drop | random */
+const LIGHTBOX_EFFECT = "zoom";
+
+const EFFECTS = {
+    slide: (d) => ({
+        out: [{ opacity: 1, transform: "translateX(0)" }, { opacity: 0, transform: `translateX(${-d * 120}px)` }],
+        in:  [{ opacity: 0, transform: `translateX(${d * 120}px)` }, { opacity: 1, transform: "translateX(0)" }]
+    }),
+    fade: () => ({
+        out: [{ opacity: 1 }, { opacity: 0 }],
+        in:  [{ opacity: 0 }, { opacity: 1 }]
+    }),
+    zoom: () => ({
+        out: [{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(1.18)" }],
+        in:  [{ opacity: 0, transform: "scale(.8)" }, { opacity: 1, transform: "scale(1)" }]
+    }),
+    blur: () => ({
+        out: [{ opacity: 1, filter: "blur(0)" }, { opacity: 0, filter: "blur(24px)" }],
+        in:  [{ opacity: 0, filter: "blur(24px)" }, { opacity: 1, filter: "blur(0)" }]
+    }),
+    flip: (d) => ({
+        out: [{ opacity: 1, transform: "perspective(1200px) rotateY(0)" }, { opacity: 0, transform: `perspective(1200px) rotateY(${-d * 80}deg)` }],
+        in:  [{ opacity: 0, transform: `perspective(1200px) rotateY(${d * 80}deg)` }, { opacity: 1, transform: "perspective(1200px) rotateY(0)" }]
+    }),
+    rotate: (d) => ({
+        out: [{ opacity: 1, transform: "translateX(0) rotate(0)" }, { opacity: 0, transform: `translateX(${-d * 160}px) rotate(${-d * 10}deg)` }],
+        in:  [{ opacity: 0, transform: `translateX(${d * 160}px) rotate(${d * 10}deg)` }, { opacity: 1, transform: "translateX(0) rotate(0)" }]
+    }),
+    drop: () => ({
+        out: [{ opacity: 1, transform: "translateY(0)" }, { opacity: 0, transform: "translateY(80px)" }],
+        in:  [{ opacity: 0, transform: "translateY(-80px)" }, { opacity: 1, transform: "translateY(0)" }]
+    })
+};
+
+let slideToken = 0;
+
+function updateLightbox(direction = 0) {
     if (!lightboxImage || currentImages.length === 0) return;
 
-    // Cập nhật ảnh chính
-    lightboxImage.src = currentImages[currentIndex];
+    const newSrc = currentImages[currentIndex];
+    const token = ++slideToken;
 
-    // Cập nhật trạng thái active cho danh sách thumbnail nếu có
     if (lightboxThumbs) {
-        const thumbItems = lightboxThumbs.querySelectorAll("img");
-        thumbItems.forEach((thumb, idx) => {
+        lightboxThumbs.querySelectorAll("img").forEach((thumb, idx) => {
+            thumb.classList.toggle("active-thumb", idx === currentIndex);
             if (idx === currentIndex) {
-                thumb.classList.add("active-thumb");
-                // Tự động cuộn thanh thumbnail đến ảnh đang chọn
-                thumb.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
-            } else {
-                thumb.classList.remove("active-thumb");
+                thumb.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
             }
         });
     }
-}
 
+    // Lần mở đầu tiên: không có hiệu ứng chuyển
+    if (!direction || !lightboxImage.getAttribute("src")) {
+        lightboxImage.src = newSrc;
+        return;
+    }
+
+    let name = LIGHTBOX_EFFECT;
+    if (name === "random" || !EFFECTS[name]) {
+        const keys = Object.keys(EFFECTS);
+        name = keys[Math.floor(Math.random() * keys.length)];
+    }
+    const fx = EFFECTS[name](direction);
+
+    const out = lightboxImage.animate(fx.out, { duration: 240, easing: "ease-in", fill: "forwards" });
+
+    const pre = new Image();
+    const ready = new Promise((r) => { pre.onload = pre.onerror = r; });
+    pre.src = newSrc;
+
+    Promise.all([out.finished, ready]).then(() => {
+        if (token !== slideToken) return;
+        lightboxImage.src = newSrc;
+        lightboxImage.getAnimations().forEach((a) => a.cancel());
+        lightboxImage.animate(fx.in, { duration: 360, easing: "cubic-bezier(.2,.8,.2,1)" });
+    }).catch(() => {});
+}
 
 /* =========================================================
    MỞ LIGHTBOX
@@ -190,25 +559,14 @@ function closeLightbox() {
 
 function previousImage() {
     if (currentImages.length === 0) return;
-    currentIndex--;
-    if (currentIndex < 0) {
-        currentIndex = currentImages.length - 1;
-    }
-    updateLightbox();
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    updateLightbox(-1);
 }
-
-
-/* =========================================================
-   ẢNH SAU
-   ========================================================= */
 
 function nextImage() {
     if (currentImages.length === 0) return;
-    currentIndex++;
-    if (currentIndex >= currentImages.length) {
-        currentIndex = 0;
-    }
-    updateLightbox();
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    updateLightbox(1);
 }
 
 
@@ -554,4 +912,27 @@ window.addEventListener('scroll', function() {
         menuWrapper.classList.remove('scrolling');
     }
 });
+/* ===== HIỆU ỨNG CHUYỂN TRANG ===== */
+document.querySelectorAll('a[href]').forEach((link) => {
+    const href = link.getAttribute('href');
 
+    // Bỏ qua: link ảnh lightbox, anchor (#), link ngoài, mở tab mới
+    if (
+        link.classList.contains('lightbox') ||
+        !href || href.startsWith('#') ||
+        href.startsWith('http') || href.startsWith('mailto:') ||
+        link.target === '_blank'
+    ) return;
+
+    link.addEventListener('click', (e) => {
+        if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(() => { window.location.href = href; }, 380);
+    });
+});
+
+// Quay lại bằng nút Back thì không bị kẹt ở trạng thái mờ
+window.addEventListener('pageshow', () => {
+    document.body.classList.remove('page-leaving');
+});
