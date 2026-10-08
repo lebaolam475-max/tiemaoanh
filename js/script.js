@@ -1306,3 +1306,5 @@ window.addEventListener('pageshow', () => {
         build();
     }
 })();
+
+<script src="js/script.js"></script>
