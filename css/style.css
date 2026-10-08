@@ -2021,3 +2021,4 @@ body.page-leaving {
 @media (max-width: 600px) {
     .video-list.shorts-grid { grid-template-columns: 1fr; gap: 40px; }
 }
+
