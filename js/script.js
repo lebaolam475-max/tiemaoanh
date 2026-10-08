@@ -1307,4 +1307,3 @@ window.addEventListener('pageshow', () => {
     }
 })();
 
-<script src="js/script.js"></script>
