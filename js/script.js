@@ -1267,15 +1267,6 @@ window.addEventListener('pageshow', () => {
             <h4>Khám phá</h4>
             <ul class="sf-list sf-links">${linksHTML}</ul>
         </div>
-
-        <div class="sf-col sf-fbcol">
-            <h4>Facebook</h4>
-            <div class="sf-fbbox">
-                <iframe src="${fbSrc}" loading="lazy" scrolling="no"
-                        allow="encrypted-media" title="Fanpage Tiệm Ảo Ảnh"></iframe>
-            </div>
-        </div>
-
     </div>
     <div class="sf-bottom"><div>${INFO.copyright}</div></div>
     `;

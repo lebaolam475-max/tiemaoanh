@@ -2022,3 +2022,22 @@ body.page-leaving {
     .video-list.shorts-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 
+/* Tắt hiệu ứng nặng trên màn hình cảm ứng */
+@media (hover: none) {
+    .portfolio-thumb:hover img,
+    .album-card:hover .album-cover img,
+    .album-page-item:hover img {
+        animation: none;
+        transform: none;
+        filter: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .lightbox-modal { backdrop-filter: none; }
+    .float-contact .fc-phone::after { animation: none; display: none; }
+    .partners-marquee {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+}
