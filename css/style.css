@@ -2061,6 +2061,7 @@ body.page-leaving {
 }
 
 /* ===== NÚT LIÊN HỆ NỔI MỚI ===== */
+/* ===== NÚT LIÊN HỆ NỔI ===== */
 .fcx {
     position: fixed;
     right: 16px;
@@ -2079,10 +2080,6 @@ body.page-leaving {
     display: flex; align-items: center; justify-content: center;
     color: #fff;
     box-shadow: 0 4px 14px rgba(0,0,0,.25);
-    opacity: 0;
-    transform: translateY(12px) scale(.8);
-    pointer-events: none;
-    transition: opacity .25s ease, transform .25s ease;
 }
 .fcx-ms   { background: linear-gradient(135deg, #0099ff, #a033ff, #ff5c87); }
 .fcx-zalo { background: #0068ff; font: 700 14px Arial, sans-serif; }
@@ -2105,6 +2102,7 @@ body.page-leaving {
     pointer-events: none;
     transition: opacity .25s ease, transform .25s ease;
 }
+.fcx.open .fcx-number { opacity: 1; transform: none; pointer-events: auto; }
 
 .fcx-toggle {
     position: relative;
@@ -2115,27 +2113,21 @@ body.page-leaving {
     cursor: pointer;
     box-shadow: 0 4px 14px rgba(0,0,0,.3);
 }
-.fcx-toggle::after {            /* vòng sóng khi đang đóng */
+.fcx-toggle::after {
     content: "";
     position: absolute; inset: 0;
     border-radius: 50%;
     border: 2px solid #d92d2d;
     animation: fcxPulse 1.8s infinite;
 }
+.fcx.open .fcx-toggle::after { animation: none; display: none; }
 @keyframes fcxPulse {
     0%   { transform: scale(1);   opacity: .8; }
     100% { transform: scale(1.6); opacity: 0; }
 }
-.fcx-ico-close { display: none; color: #fff; font-size: 34px; line-height: 1; }
-
-/* trạng thái mở */
-.fcx.open .fcx-item,
-.fcx.open .fcx-number { opacity: 1; transform: none; pointer-events: auto; }
-.fcx.open .fcx-toggle::after { animation: none; display: none; }
-.fcx.open .fcx-ico-phone { display: none; }
-.fcx.open .fcx-ico-close { display: block; }
 
 @media (max-width: 700px) {
     .fcx { right: 12px; bottom: 16px; }
+    .fcx-item { width: 48px; height: 48px; }
     .fcx-number { font-size: 16px; height: 44px; line-height: 44px; padding: 0 18px; }
 }

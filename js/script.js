@@ -1099,6 +1099,7 @@ window.addEventListener('pageshow', () => {
 });
 
 /* ===== NÚT LIÊN HỆ NỔI (bấm gọi để bung ra) ===== */
+/* ===== NÚT LIÊN HỆ NỔI: Messenger + Zalo luôn hiện, bấm gọi để ra số ===== */
 (function () {
     const PHONE_SHOW = "0378 553 538";
     const PHONE      = "0378553538";
@@ -1114,9 +1115,8 @@ window.addEventListener('pageshow', () => {
         <a class="fcx-item fcx-zalo" href="${ZALO}" target="_blank" rel="noopener" aria-label="Zalo">Zalo</a>
         <div class="fcx-row">
             <a class="fcx-number" href="tel:${PHONE}">${PHONE_SHOW}</a>
-            <button class="fcx-toggle" type="button" aria-label="Liên hệ" aria-expanded="false">
-                <svg class="fcx-ico-phone" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-                <span class="fcx-ico-close">×</span>
+            <button class="fcx-toggle" type="button" aria-label="Gọi điện" aria-expanded="false">
+                <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
             </button>
         </div>`;
     document.body.appendChild(box);
