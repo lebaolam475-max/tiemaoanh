@@ -1098,24 +1098,41 @@ window.addEventListener('pageshow', () => {
     document.body.classList.remove('page-leaving');
 });
 
-/* ===== NÚT LIÊN HỆ NỔI ===== */
+/* ===== NÚT LIÊN HỆ NỔI (bấm gọi để bung ra) ===== */
 (function () {
-    const PHONE     = "0378553538";                 // số điện thoại của bạn
-    const MESSENGER = "https://m.me/tiemaoanh"; // link Messenger fanpage
-    const ZALO      = "https://zalo.me/0378553538"; // link Zalo
+    const PHONE_SHOW = "0378 553 538";
+    const PHONE      = "0378553538";
+    const MESSENGER  = "https://m.me/tiemaoanh";
+    const ZALO       = "https://zalo.me/0378553538";
 
     const box = document.createElement("div");
-    box.className = "float-contact";
+    box.className = "fcx";
     box.innerHTML = `
-        <a class="fc-phone" href="tel:${PHONE}" data-label="Gọi điện" aria-label="Gọi điện">
-            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-        </a>
-        <a class="fc-messenger" href="${MESSENGER}" target="_blank" rel="noopener" data-label="Messenger" aria-label="Messenger">
+        <a class="fcx-item fcx-ms" href="${MESSENGER}" target="_blank" rel="noopener" aria-label="Messenger">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.1 2 11.2c0 2.9 1.4 5.4 3.7 7.1V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.2S17.5 2 12 2zm1 12.4l-2.5-2.7-4.9 2.7 5.4-5.7 2.6 2.7 4.8-2.7-5.4 5.7z"/></svg>
         </a>
-        <a class="fc-zalo" href="${ZALO}" target="_blank" rel="noopener" data-label="Zalo" aria-label="Zalo">Zalo</a>
-    `;
+        <a class="fcx-item fcx-zalo" href="${ZALO}" target="_blank" rel="noopener" aria-label="Zalo">Zalo</a>
+        <div class="fcx-row">
+            <a class="fcx-number" href="tel:${PHONE}">${PHONE_SHOW}</a>
+            <button class="fcx-toggle" type="button" aria-label="Liên hệ" aria-expanded="false">
+                <svg class="fcx-ico-phone" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+                <span class="fcx-ico-close">×</span>
+            </button>
+        </div>`;
     document.body.appendChild(box);
+
+    const toggle = box.querySelector(".fcx-toggle");
+    toggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const open = box.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open);
+    });
+    document.addEventListener("click", function (e) {
+        if (!box.contains(e.target)) {
+            box.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+        }
+    });
 })();
 
 /* =========================================================
