@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Trang chủ -->
+  <url>
+    <loc>https://tiemaoanh.com/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <priority>1.00</priority>
+  </url>
+  
+  <!-- Trang sản phẩm -->
+  <url>
+    <loc>https://tiemaoanh.com/san-pham.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <priority>0.80</priority>
+  </url>
+  
+  <!-- Thêm các trang khác tương tự vào đây -->
+</urlset>
