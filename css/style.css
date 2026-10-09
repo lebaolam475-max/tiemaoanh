@@ -2041,3 +2041,21 @@ body.page-leaving {
         mask-image: none;
     }
 }
+
+.my-col .portfolio-thumb img { aspect-ratio: auto 3 / 4; }
+/* Menu mobile/tablet: nền trắng, chữ đen, luôn đọc được */
+@media (max-width: 1024px) {
+    .main-nav {
+        background: #fff;
+    }
+    .main-nav li a,
+    .menu-wrapper.scrolling .main-nav li a,
+    .inner-page .main-nav a {
+        color: #222 !important;
+        text-shadow: none !important;
+        border-bottom: 1px solid #eee;
+    }
+    .main-nav li a:hover {
+        color: #919191 !important;
+    }
+}
