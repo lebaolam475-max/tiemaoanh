@@ -1315,3 +1315,36 @@ window.addEventListener('pageshow', () => {
     }
 })();
 
+/* ===== THEO DÕI LƯỢT XEM + LƯỢT BẤM LIÊN HỆ (GA4) ===== */
+(function () {
+    var GA_ID = "G-G3P2BD791G";   // <-- thay bằng mã của bạn
+
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag("js", new Date());
+    gtag("config", GA_ID);
+
+    document.addEventListener("click", function (e) {
+        var a = e.target.closest("a[href]");
+        if (!a) return;
+        var href = a.getAttribute("href");
+        var type = null;
+
+        if (href.indexOf("tel:") === 0)             type = "click_phone";
+        else if (href.indexOf("zalo.me") > -1)      type = "click_zalo";
+        else if (href.indexOf("m.me") > -1 ||
+                 href.indexOf("messenger.com") > -1) type = "click_messenger";
+
+        if (type) {
+            gtag("event", type, {
+                link_url: href,
+                page_path: location.pathname   // biết khách bấm từ trang nào
+            });
+        }
+    });
+})();
